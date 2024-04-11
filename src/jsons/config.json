@@ -7,7 +7,5 @@
       "officer": []
     }
   },
-  "enabledInteractions": [
-    "slash_commands"
-  ]
+  "enabledInteractions": ["slash_commands"]
 }
