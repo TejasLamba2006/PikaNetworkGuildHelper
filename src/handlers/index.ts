@@ -10,20 +10,20 @@ import stringSelectHandler from "./select/string-handler.js";
 import userSelectHandler from "./select/user-handler.js";
 import commandHandler from "./slash-command-handler.js";
 export default function initHandlers(client: Client) {
-	passClient(
-		client,
-		buttonHandler,
-		commandHandler,
-		eventHandler,
-		modalHandler,
-		stringSelectHandler,
-		channelSelectHandler,
-		roleSelectHandler,
-		mentionableSelectHandler,
-		userSelectHandler,
-		contextMenuHandler,
-	);
+  passClient(
+    client,
+    buttonHandler,
+    commandHandler,
+    eventHandler,
+    modalHandler,
+    stringSelectHandler,
+    channelSelectHandler,
+    roleSelectHandler,
+    mentionableSelectHandler,
+    userSelectHandler,
+    contextMenuHandler
+  );
 }
 function passClient(client: Client, ...funcs: ((client: Client) => unknown)[]) {
-	for (const func of funcs) func(client);
+  for (const func of funcs) func(client);
 }

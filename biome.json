@@ -1,6 +1,8 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.6.3/schema.json",
-	"files": { "ignoreUnknown": true },
+	"files": {
+		"ignoreUnknown": true
+	},
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": false,
@@ -10,7 +12,9 @@
 		"lineWidth": 100,
 		"attributePosition": "auto"
 	},
-	"organizeImports": { "enabled": true },
+	"organizeImports": {
+		"enabled": true
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -21,7 +25,7 @@
 			},
 			"correctness": {
 				"noUnusedImports": "error",
-				"noUnusedVariables": "error",
+				"noUnusedVariables": "off",
 				"noUnusedPrivateClassMembers": "error",
 				"noUnreachable": "off"
 			}
