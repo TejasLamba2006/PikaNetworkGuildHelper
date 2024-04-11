@@ -93,7 +93,7 @@ export default new Event({
     }
 
     const status = await client.user.setPresence({
-      status: 'dnd',
+      status: config.status.mode,
       activities: [{
         type: ActivityType.Custom,
         name: 'customname',
