@@ -3,10 +3,10 @@ import type Client from "@/structures/client.js";
 import type Event from "@/structures/event.js";
 import type { ClientEvents } from "discord.js";
 async function eventHandler(client: Client) {
-	const directories = await fs.readdir("./dist/events");
+	const directories = await fs.readdir("./src/events");
 	for (const directory of directories) {
-		const files = (await fs.readdir(`./dist/events/${directory}`)).filter(
-			(v) => !v.endsWith(".disabled.js"),
+		const files = (await fs.readdir(`./src/events/${directory}`)).filter(
+			(v) => !v.endsWith(".disabled.ts"),
 		);
 
 		for (const file of files) {

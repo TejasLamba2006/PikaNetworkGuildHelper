@@ -3,14 +3,14 @@ import type Client from "@/structures/client.js";
 import type Select from "@/structures/select/mentionable.js";
 export default async function mentionableSelectHandler(client: Client) {
 	const directories = await fs.readdir(
-		"./dist/interactions/select-menus/mentionable",
+		"./src/interactions/select-menus/mentionable",
 	);
 	for (const directory of directories) {
 		const files = (
 			await fs.readdir(
-				`./dist/interactions/select-menus/mentionable/${directory}/`,
+				`./src/interactions/select-menus/mentionable/${directory}/`,
 			)
-		).filter((v) => !v.endsWith(".disabled.js"));
+		).filter((v) => !v.endsWith(".disabled.ts"));
 		for (const file of files) {
 			const imported = (await import(
 				`../../interactions/select-menus/mentionable/${directory}/${file}`
