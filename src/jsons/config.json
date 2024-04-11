@@ -14,5 +14,9 @@
   },
   "enabledInteractions": [
     "slash_commands"
-  ]
+  ],
+  "status": {
+    "mode": "dnd",
+    "state": "TEST"
+  }
 }
