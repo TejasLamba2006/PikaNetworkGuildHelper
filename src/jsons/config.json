@@ -1,14 +1,13 @@
 {
   "guild": {
-    "name": "",
-    "JOIN_LEAVE_LOGS_CHANNEL": "",
+    "name": "thebois",
+    "JOIN_LEAVE_LOGS_CHANNEL": "1227963964265332756",
+    "logo": "",
     "power": {
       "owner": [],
       "manager": [],
       "officer": []
     }
   },
-  "enabledInteractions": [
-    "slash_commands"
-  ]
+  "enabledInteractions": ["slash_commands"]
 }

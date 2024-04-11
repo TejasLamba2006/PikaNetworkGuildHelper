@@ -18,10 +18,12 @@
   },
   "dependencies": {
     "chalk": "^5.3.0",
+    "croner": "^8.0.2",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
     "glob": "^10.3.12",
     "husky": "^9.0.11",
+    "mineflayer": "^4.20.0",
     "mongoose": "^8.3.1",
     "undici": "^6.12.0"
   },
