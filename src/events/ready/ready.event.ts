@@ -46,48 +46,50 @@ export default new Event({
     await findOrCreate("./data/guildLogs.json");
     await findOrCreate("./data/guildMembers.json");
 
-    const joinLeaveLogsChannel = client.channels.cache.get(config.guild.JOIN_LEAVE_LOGS_CHANNEL);
-    if (joinLeaveLogsChannel?.type !== ChannelType.GuildText) {
-      c.logger.error(
-        `Channel ${config.guild.JOIN_LEAVE_LOGS_CHANNEL} is not a text based channel!`
-      );
-    } else {
-      c.logger.info("Join/Leave logs channel found");
-      const webhook =
-        (await joinLeaveLogsChannel.fetchWebhooks()).find(
-          v => v.name === "PikaNetworkGuildHelperBot"
-        ) ||
-        (await joinLeaveLogsChannel.createWebhook({
-          name: "PikaNetworkGuildHelperBot",
-          reason: "Join/Leave logs",
-        }));
-      c.logger.info("Join/Leave logs webhook found");
-      Cron("* * * * *", async () => {
-        c.logger.debug("Checking for new members");
-        const data = await getLeaveAndJoins();
-        c.logger.debug(`Found ${data.joined.length} new members and ${data.left.length} left`);
-        if (data.joined.length > 0) {
-          const embed = new EmbedBuilder().setTitle("New members joined").setColor("Green");
-          for (const member of data.joined) {
-            embed.setDescription(`**${member.user.username}** joined on ${member.joinDate}`);
-            await webhook.send({
-              embeds: [embed],
-              username: config.guild.name,
-              avatarURL: config.guild.logo,
-            });
+    if (config.guild.JOIN_LEAVE_LOGS.enabled) {
+      const joinLeaveLogsChannel = client.channels.cache.get(config.guild.JOIN_LEAVE_LOGS.channel);
+      if (joinLeaveLogsChannel?.type !== ChannelType.GuildText) {
+        c.logger.error(
+          `Channel ${config.guild.JOIN_LEAVE_LOGS.channel} is not a text based channel!`
+        );
+      } else {
+        c.logger.info("Join/Leave logs channel found");
+        const webhook =
+          (await joinLeaveLogsChannel.fetchWebhooks()).find(
+            v => v.name === "PikaNetworkGuildHelperBot"
+          ) ||
+          (await joinLeaveLogsChannel.createWebhook({
+            name: "PikaNetworkGuildHelperBot",
+            reason: "Join/Leave logs",
+          }));
+        c.logger.info("Join/Leave logs webhook found");
+        Cron("* * * * *", async () => {
+          c.logger.debug("Checking for new members");
+          const data = await getLeaveAndJoins();
+          c.logger.debug(`Found ${data.joined.length} new members and ${data.left.length} left`);
+          if (data.joined.length > 0) {
+            const embed = new EmbedBuilder().setTitle("New members joined").setColor("Green");
+            for (const member of data.joined) {
+              embed.setDescription(`**${member.user.username}** joined on ${member.joinDate}`);
+              await webhook.send({
+                embeds: [embed],
+                username: config.guild.name,
+                avatarURL: config.guild.logo,
+              });
+            }
+          } else if (data.left.length > 0) {
+            const embed = new EmbedBuilder().setTitle("Members left").setColor("Red");
+            for (const member of data.left) {
+              embed.setDescription(`**${member.user.username}** left on ${member.joinDate}`);
+              await webhook.send({
+                embeds: [embed],
+                username: config.guild.name,
+                avatarURL: config.guild.logo,
+              });
+            }
           }
-        } else if (data.left.length > 0) {
-          const embed = new EmbedBuilder().setTitle("Members left").setColor("Red");
-          for (const member of data.left) {
-            embed.setDescription(`**${member.user.username}** left on ${member.joinDate}`);
-            await webhook.send({
-              embeds: [embed],
-              username: config.guild.name,
-              avatarURL: config.guild.logo,
-            });
-          }
-        }
-      });
+        });
+      }
     }
   },
 });

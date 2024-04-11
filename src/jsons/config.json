@@ -1,7 +1,10 @@
 {
   "guild": {
     "name": "thebois",
-    "JOIN_LEAVE_LOGS_CHANNEL": "1227963964265332756",
+    "JOIN_LEAVE_LOGS": {
+      "channel": "1227963964265332756",
+      "enabled": true
+    },
     "logo": "",
     "power": {
       "owner": [],
@@ -9,5 +12,7 @@
       "officer": []
     }
   },
-  "enabledInteractions": ["slash_commands"]
+  "enabledInteractions": [
+    "slash_commands"
+  ]
 }
