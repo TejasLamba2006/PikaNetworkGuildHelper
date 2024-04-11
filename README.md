@@ -27,3 +27,17 @@ Supported interactions:
 ## Rules
 
 - For disabled commands, events, selects, buttons, context menus, or modals, name them `(name).disabled.ts`
+
+```json
+
+    "slash_command_autocomplete",
+    "buttons",
+    "context_menus",
+    "modals",
+    "string_selects",
+    "role_selects",
+    "user_selects",
+    "channel_selects",
+    "mentionable_selects"
+
+    ```

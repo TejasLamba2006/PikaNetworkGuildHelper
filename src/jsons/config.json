@@ -8,15 +8,6 @@
     }
   },
   "enabledInteractions": [
-    "slash_commands",
-    "slash_command_autocomplete",
-    "buttons",
-    "context_menus",
-    "modals",
-    "string_selects",
-    "role_selects",
-    "user_selects",
-    "channel_selects",
-    "mentionable_selects"
+    "slash_commands"
   ]
 }
