@@ -3,7 +3,7 @@ import path from "node:path";
 import config from "@/jsons/config.json";
 import Event from "@/structures/event.js";
 import Cron from "croner";
-import { ChannelType, EmbedBuilder } from "discord.js";
+import { ChannelType, EmbedBuilder, ActivityType } from "discord.js";
 import { request } from "undici";
 
 interface User {
@@ -91,6 +91,15 @@ export default new Event({
         });
       }
     }
+
+    const status = await client.user.setPresence({
+      status: 'dnd',
+      activities: [{
+        type: ActivityType.Custom,
+        name: 'customname',
+        state: config.status.state,
+      }]
+    });
   },
 });
 
