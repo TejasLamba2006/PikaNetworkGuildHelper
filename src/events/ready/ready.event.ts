@@ -70,7 +70,7 @@ export default new Event({
           if (data.joined.length > 0) {
             const embed = new EmbedBuilder().setTitle("New members joined").setColor("Green");
             for (const member of data.joined) {
-              embed.setDescription(`**${member.user.username}** joined on ${member.joinDate}`);
+              embed.setDescription(`**${member.user.username}** joined on <t:${Math.floor(new Date(member.joinDate).getTime() / 1000)}:F>`);
               await webhook.send({
                 embeds: [embed],
                 username: config.guild.name,
