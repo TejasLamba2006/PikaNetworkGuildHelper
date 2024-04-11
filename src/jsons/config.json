@@ -1,4 +1,12 @@
 {
+  "guild": {
+    "name": "",
+    "power": {
+      "owner": [],
+      "manager": [],
+      "officer": []
+    }
+  },
   "enabledInteractions": [
     "slash_commands",
     "slash_command_autocomplete",
