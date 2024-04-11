@@ -1,11 +1,14 @@
 {
   "guild": {
     "name": "",
+    "JOIN_LEAVE_LOGS_CHANNEL": "",
     "power": {
       "owner": [],
       "manager": [],
       "officer": []
     }
   },
-  "enabledInteractions": ["slash_commands"]
+  "enabledInteractions": [
+    "slash_commands"
+  ]
 }
