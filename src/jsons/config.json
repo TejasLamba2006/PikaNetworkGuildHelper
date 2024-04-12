@@ -12,7 +12,9 @@
       "officer": []
     }
   },
-  "enabledInteractions": ["slash_commands"],
+  "enabledInteractions": [
+    "slash_commands"
+  ],
   "status": {
     "state": "BBC for the win"
   },
@@ -22,7 +24,7 @@
     "loginPassword": "12345678",
     "minecraftChannelID": "1228237129235173406",
     "donationsLogs": {
-      "channel": "",
+      "channel": "1228401664570949734",
       "enabled": true
     }
   }
