@@ -14,12 +14,16 @@
   },
   "enabledInteractions": ["slash_commands"],
   "status": {
-    "state": "your status here"
+    "state": "BBC for the win"
   },
   "mineflayer": {
-    "username": "replace",
-    "host": "pika.host",
-    "loginPassword": "replace",
-    "minecraftChannelID": "replace"
+    "username": "theneggaishere",
+    "host": "pikaguildhelper.pika.host",
+    "loginPassword": "12345678",
+    "minecraftChannelID": "1228237129235173406",
+    "donationsLogs": {
+      "channel": "",
+      "enabled": true
+    }
   }
 }

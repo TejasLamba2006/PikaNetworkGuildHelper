@@ -1,13 +1,14 @@
 import Command from "@/structures/command.js";
-import { SlashCommandBuilder } from "discord.js";
 import { bot } from "@/structures/mineflayer.js";
+import { SlashCommandBuilder } from "discord.js";
 
 export default new Command({
   data: new SlashCommandBuilder()
     .setName("mc-send")
     .setDescription("Send a message to the Minecraft chat")
     .addStringOption(option =>
-      option.setName("message")
+      option
+        .setName("message")
         .setDescription("The message to send to the Minecraft chat")
         .setRequired(true)
     ),
@@ -15,7 +16,7 @@ export default new Command({
     const message = interaction.options.getString("message");
 
     if (message) {
-        await bot.chat(message);
+      await bot.chat(message);
     }
     interaction.reply({ content: `Sent "${message}" to Minecraft chat.`, ephemeral: true });
   },

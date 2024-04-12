@@ -1,7 +1,7 @@
-import Command from "@/structures/command.js";
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { bot } from "@/structures/mineflayer.js";
 import config from "@/jsons/config.json";
+import Command from "@/structures/command.js";
+import { bot } from "@/structures/mineflayer.js";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 
 export default new Command({
   data: new SlashCommandBuilder()
@@ -11,7 +11,7 @@ export default new Command({
     const ping = bot.player.ping;
 
     const embed = new EmbedBuilder()
-      .setColor('#0099ff')
+      .setColor("#0099ff")
       .setTitle(`${config.mineflayer.username}'s Ping`)
       .setDescription(`The ping of ${config.mineflayer.username} is ${ping} ms.`)
       .setTimestamp();
