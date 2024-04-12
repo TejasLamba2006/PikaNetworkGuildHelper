@@ -1,6 +1,6 @@
 {
   "guild": {
-    "name": "thebois",
+    "name": "THEBOIS",
     "JOIN_LEAVE_LOGS": {
       "channel": "1227963964265332756",
       "enabled": true
@@ -12,7 +12,14 @@
       "officer": []
     }
   },
-  "enabledInteractions": [
-    "slash_commands"
-  ]
+  "enabledInteractions": ["slash_commands"],
+  "status": {
+    "state": "your status here"
+  },
+  "mineflayer": {
+    "username": "replace",
+    "host": "pika.host",
+    "loginPassword": "replace",
+    "minecraftChannelID": "replace"
+  }
 }

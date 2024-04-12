@@ -2,8 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import config from "@/jsons/config.json";
 import Event from "@/structures/event.js";
+import mineflayerBot from "@/structures/mineflayer.js";
 import Cron from "croner";
-import { ChannelType, EmbedBuilder } from "discord.js";
+import { ActivityType, ChannelType, EmbedBuilder } from "discord.js";
 import { request } from "undici";
 
 interface User {
@@ -63,6 +64,18 @@ export default new Event({
             reason: "Join/Leave logs",
           }));
         c.logger.info("Join/Leave logs webhook found");
+
+        await client.user.setPresence({
+          status: "dnd",
+          activities: [
+            {
+              type: ActivityType.Custom,
+              name: "customname",
+              state: config.status.state,
+            },
+          ],
+        });
+
         Cron("* * * * *", async () => {
           c.logger.debug("Checking for new members");
           const data = await getLeaveAndJoins();
@@ -89,6 +102,8 @@ export default new Event({
             }
           }
         });
+
+        mineflayerBot.run(c, client);
       }
     }
   },
@@ -115,6 +130,7 @@ async function getGuild() {
  * Retrieves the list of new members who joined a guild and the list of members who left the guild.
  * @returns {Promise<{ joined: Member[], left: Member[] }>} An object containing the joined and left members.
  */
+
 async function getLeaveAndJoins(): Promise<{ joined: Member[]; left: Member[] }> {
   const oldMembers: Member[] = JSON.parse(fs.readFileSync("./data/guildMembers.json", "utf8"));
 
